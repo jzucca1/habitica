@@ -53,7 +53,7 @@
     "hellojs": "^1.15.1",
     "html-webpack-plugin": "^3.2.0",
     "image-size": "^0.6.2",
-    "in-app-purchase": "^1.9.4",
+    "in-app-purchase": "1.10.1",
     "intro.js": "^2.9.3",
     "jquery": ">=3.0.0",
     "js2xmlparser": "^3.0.0",
