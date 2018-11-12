@@ -474,5 +474,6 @@
     "sharedCompletion": "Terminación compartida",
     "recurringCompletion": "Ninguno - La tarea de grupo no ha sido completada",
     "singleCompletion": "Único - Se completa cuando cualquiera de los usuarios a los que haya sido asignada la termina",
-    "allAssignedCompletion": "Todos - Se completa cuando todos los usuarios a los que ha sido asignada la terminan"
+    "allAssignedCompletion": "Todos - Se completa cuando todos los usuarios a los que ha sido asignada la terminan",
+    "messageBlockedUser": "No puede enviar un mensaje a este usuario porque lo ha bloqueado o ha elegido bloquear mensajes."
 }

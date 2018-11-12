@@ -93,7 +93,7 @@ base-notification(
 
   .health-bar {
     width: 378px;
-    height: 24px;
+    height: 100px;
     background-color: #410f2a;
   }
 
@@ -108,7 +108,7 @@ base-notification(
 
   .boss-health-bar {
     background-color: #f74e52;
-    height: 12px;
+    height: 100px;
     margin-bottom: .5em;
     border-radius: 2px;
   }

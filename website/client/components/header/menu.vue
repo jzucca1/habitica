@@ -65,7 +65,7 @@ div
           .top-menu-icon.svg-icon.gem(v-html="icons.gem", @click='showBuyGemsModal("gems")', v-b-tooltip.hover.bottom="$t('gems')")
           span {{userGems}}
         .item-with-icon.gold
-          .top-menu-icon.svg-icon(v-html="icons.gold", v-b-tooltip.hover.bottom="$t('gold')")
+          .top-menu-icon.svg-icon(v-html="icons.gold", v-b-tooltip.hover.bottom="$t('Josie')")
           span {{Math.floor(user.stats.gp * 100) / 100}}
       .form-inline.desktop-only
         a.item-with-icon(@click="sync", v-b-tooltip.hover.bottom="$t('sync')")

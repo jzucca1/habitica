@@ -41,7 +41,7 @@
         .empty-messages.text-center(v-if='selectedConversation.key && selectedConversationMessages.length === 0')
           p {{ $t('beginningOfConversation', {userName: selectedConversation.name})}}
         chat-messages.message-scroll(
-          v-if="selectedConversation.messages && selectedConversationMessages.length > 0", 
+          v-if="selectedConversation.messages && selectedConversationMessages.length > 0",
           :chat='selectedConversationMessages',
           :inbox='true',
           @message-removed='messageRemoved',
@@ -54,9 +54,14 @@
           textarea(
             v-model='newMessage',
             @keyup.ctrl.enter='sendPrivateMessage()',
+            @focus='checkUser()',
+            :disabled='textAreaDisabled',
             maxlength='3000'
           )
-          button.btn.btn-secondary(@click='sendPrivateMessage()') {{$t('send')}}
+          button.btn.btn-secondary(
+            @click='sendPrivateMessage()',
+            :disabled='sendBtnDisabled'
+          ) {{$t('send')}}
           .row
             span.ml-3 {{ currentLength }} / 3000
 </template>
@@ -261,6 +266,8 @@ export default {
       messages: [],
       loaded: false,
       initiatedConversation: null,
+      sendBtnDisabled: false,
+      textAreaDisabled: false,
     };
   },
   filters: {
@@ -404,7 +411,32 @@ export default {
         let chatscroll = this.$refs.chatscroll.$el;
         chatscroll.scrollTop = chatscroll.scrollHeight;
       });
+      this.textAreaDisabled = false;
     },
+
+    // Checks if user is able to send msg to intended recipiant
+    checkUser () {
+      this.$store.dispatch('members:getObjectionsToInteraction', {
+        interaction: 'send-private-message',
+        toUserId: this.selectedConversation.key,
+      }).then(response => {
+        const objections = response.data.data;
+        if (objections.length === 1) {
+          this.sendBtnDisabled = true;
+          this.textAreaDisabled = true;
+          this.$store.dispatch('snackbars:add', {
+            title: 'Habitica',
+            text: this.$t('notAuthorizedToSendMessageToThisUser'),
+            type: 'error',
+            timeout: true,
+          });
+        } else {
+          this.sendBtnDisabled = false;
+          this.textAreaDisabled = false;
+        }
+      });
+    },
+
     sendPrivateMessage () {
       if (!this.newMessage) return;
 

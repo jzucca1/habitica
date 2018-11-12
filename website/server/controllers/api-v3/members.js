@@ -570,7 +570,6 @@ api.getObjectionsToInteraction = {
     let sender = res.locals.user;
     let receiver = await User.findById(req.params.toUserId).exec();
     if (!receiver) throw new NotFound(res.t('userWithIDNotFound', {userId: req.params.toUserId}));
-
     let interaction = req.params.interaction;
     let response = sender.getObjectionsToInteraction(interaction, receiver);
 
