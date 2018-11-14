@@ -420,19 +420,30 @@ export default {
         interaction: 'send-private-message',
         toUserId: this.selectedConversation.key,
       }).then(response => {
-        const objections = response.data.data;
-        if (objections.length === 1) {
+        if (response.request.status === 500) {
           this.sendBtnDisabled = true;
           this.textAreaDisabled = true;
           this.$store.dispatch('snackbars:add', {
             title: 'Habitica',
-            text: this.$t('notAuthorizedToSendMessageToThisUser'),
+            text: this.$t('cannotSendMessageToDeletedUser'),
             type: 'error',
             timeout: true,
           });
         } else {
-          this.sendBtnDisabled = false;
-          this.textAreaDisabled = false;
+          const objections = response.data.data;
+          if (objections.length === 1) {
+            this.sendBtnDisabled = true;
+            this.textAreaDisabled = true;
+            this.$store.dispatch('snackbars:add', {
+              title: 'Habitica',
+              text: this.$t('notAuthorizedToSendMessageToThisUser'),
+              type: 'error',
+              timeout: true,
+            });
+          } else {
+            this.sendBtnDisabled = false;
+            this.textAreaDisabled = false;
+          }
         }
       });
     },

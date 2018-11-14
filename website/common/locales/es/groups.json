@@ -149,6 +149,7 @@
     "toUserIDRequired": "Es necesaria una ID de usuario.",
     "gemAmountRequired": "Es obligatorio indicar un número de gemas",
     "notAuthorizedToSendMessageToThisUser": "No puedes enviar un mensaje a este jugador porque ha escogido bloquear los mensajes.",
+    "cannotSendMessageToDeletedUser": "No puedes enviar un mensaje a este jugador porque han eliminado su cuenta.",
     "privateMessageGiftGemsMessage": "¡Hola <%= receiverName %>, <%= senderName %> te ha enviado <%= gemAmount %> gemas!",
     "privateMessageGiftSubscriptionMessage": "<%= numberOfMonths %> meses de subscripción!",
     "cannotSendGemsToYourself": "No te puedes enviar gemas a ti mismo, en su lugar, intenta con una subscripción.",
@@ -474,6 +475,5 @@
     "sharedCompletion": "Terminación compartida",
     "recurringCompletion": "Ninguno - La tarea de grupo no ha sido completada",
     "singleCompletion": "Único - Se completa cuando cualquiera de los usuarios a los que haya sido asignada la termina",
-    "allAssignedCompletion": "Todos - Se completa cuando todos los usuarios a los que ha sido asignada la terminan",
-    "messageBlockedUser": "No puede enviar un mensaje a este usuario porque lo ha bloqueado o ha elegido bloquear mensajes."
+    "allAssignedCompletion": "Todos - Se completa cuando todos los usuarios a los que ha sido asignada la terminan"
 }
